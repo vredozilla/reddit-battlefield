@@ -1,12 +1,18 @@
 import * as React from "react";
 import ShipsContainer from './ShipsContainer';
-import shipData from "../utils"
+import Battlefield from './Battlefield';
+import getInitialData from "../utils"
 
 export default class ApplicationShell extends React.Component {
+    clickHandler = (value) =>{
+            console.log(value);    
+        }
     render(){
+        
         return <div>
-                <ShipsContainer
-                    ships = {shipData}
+                <Battlefield
+                    positions={Array.apply(null, {length: 100}).map(() => {return 0;})}
+                    handler={this.clickHandler}
                 />
             </div>
     }

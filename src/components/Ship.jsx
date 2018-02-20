@@ -8,19 +8,22 @@ import {icons} from "../utils";
 
 export default class Ship extends React.Component{
     render(){
-        const img = <div className="ship-icon">
+        const img = <div className="ship-icon" key="icon">
                     <img src={this.props.src} alt=""/>
                 </div>
         
-        const health = <div className="health">
+        const health = <div className="health" key="health">
                 {
-                    this.props.health.map((item)=>{
-                        return <img src={item > -1 ? icons.hitSmall : icons.missSmall} alt=""/>
+                    this.props.health.map((item, index)=>{
+                        return <img 
+                            key={index}
+                            src={item > -1 ? icons.hitSmall : icons.missSmall} 
+                            alt=""/>
                     })
                 }
             </div>
 
-        let children = [img, health];
+        const children = [img, health];
 
         return <div className="ship">
                 {children}

@@ -1,3 +1,4 @@
+const fieldSize = 10;
 const layoutJson = require('./ShipLayoutData.json');
 
 const icons ={
@@ -12,25 +13,43 @@ const icons ={
     miss: require("./images/Miss.png"),
 }
 
-let shipData = [];
-const shipTypes =  layoutJson.shipTypes;
-const layout = layoutJson.layout;
-for (let key in shipTypes) {
-    if (shipTypes.hasOwnProperty(key)) {
-        const shipType = shipTypes[key];
-        for (let i = 0; i<shipType.count; i++)
-        {
-            const ship = {
-                    name: key + i,
-                    src: icons[key],
-                    health: Array.apply(null, {length: shipType.size}).map(() => {return -1;}),
-                }
-            shipData.push(ship);
+const getPositions = (shipType) => {
+        const layout = layoutJson.layout;
+        let positions;
+        for(let i = 0; i<layout.length; i++){
+            const ship = layout[i];
+            if (ship.ship === shipType){
+                positions = ship.positions.map((item)=>{
+                        return item[0]*fieldSize + item[1];
+                    });
+                break;
+            }
         }
+        return positions;
     }
-}
 
-export default shipData;
+const getInitialData = ()=>{
+        const shipTypes =  layoutJson.shipTypes;
+        let shipData = [];
+        for (let key in shipTypes) {
+            if (shipTypes.hasOwnProperty(key)) {
+                const shipType = shipTypes[key];
+                const ship = {
+                        name: key,
+                        src: icons[key],
+                        health: Array.apply(null, {length: shipType.size}).map(() => {return -1;}),
+                        positions: getPositions(key),
+                    }
+                shipData.push(ship);
+            }
+        }
+        return shipData;
+    }
+
+
+
+
+export default getInitialData;
 export {
     icons
 }
