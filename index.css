@@ -1,0 +1,107 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family: sans-serif;
+}
+.appshell{
+  background-color: yellow;
+  display: flex;
+  padding: 20px 50px 20px 50px;
+  height: 100vh;
+}
+.gameInfo{
+  background-color: green;
+  flex-grow: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 15px;
+}
+.battlefield-container{
+  background-color: red;
+  flex-grow: 3;
+  padding: 15px;
+  display: flex;
+}
+.battlefield{
+  background-color: blue;
+  flex-grow: 1;
+  border: 4px solid orange;
+}
+.score-container{
+  background-color: magenta;
+  flex-grow: 1;
+  display: flex;
+}
+.player1, .player2{
+  background-color: white;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  margin: 10px;
+}
+.score{
+  background-color: #e6ffe6;
+  flex-grow: 1;
+  border-bottom: 1px solid black;
+}
+.name{
+  background-color: #ffffb3;
+  flex-grow: 1;
+}
+.ship-container{
+  background-color: black;
+  padding: 10px;
+  flex-grow: 3;
+  display: grid;
+
+  /*
+  display: flex;
+  flex-direction: column;
+  */
+}
+.ship{
+  background-color: grey;
+  margin: 5px;
+  /*height: 50px; /* rework to be dynamic depending on the available space*/
+}
+
+@media only screen 
+and (min-device-width : 768px) 
+and (max-device-width : 1024px) 
+and (orientation : portrait){
+  .appshell{
+    flex-direction: column-reverse;
+    padding: 10px;
+  }
+  .gameInfo{
+    flex-grow: 1;
+    flex-direction: row;
+  }
+  .battlefield-container{
+    flex-grow: 5;
+  }
+  .ship-container{
+    grid-template-columns: 1fr 1fr; 
+  }
+}
+
+@media only screen 
+and (min-device-width : 375px) 
+and (max-device-width : 667px) 
+and (orientation : portrait){
+  .appshell{
+    flex-direction: column-reverse;
+    padding: 0;
+  }
+  .gameInfo{
+    flex-grow: 1;
+    padding: 0;
+  }
+  .battlefield-container{
+    flex-grow: 4;
+    padding: 0;
+  }
+  .ship-container{
+    grid-template-columns: 1fr 1fr; 
+  }  
+}
