@@ -38,7 +38,6 @@ const getShipData = ()=>{
                 const ship = {
                         name: key,
                         src: icons[key],
-                        health: Array.apply(null, {length: shipType.size}).map(() => {return -1;}),
                         positions: getPositions(key),
                     }
                 shipData.push(ship);

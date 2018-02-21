@@ -11,8 +11,8 @@ export default class ShipsContainer extends React.Component{
         const children = this.props.ships.map((item)=>{
                 return <Ship
                         key={item.name}
+                        name={item.name}
                         src={item.src}
-                        health={item.health}
                     />
             })
 

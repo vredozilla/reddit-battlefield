@@ -1,4 +1,5 @@
 import * as React from "react";
+import { connect } from 'react-redux';
 import {icons} from "../utils";
 
 /* props
@@ -6,7 +7,7 @@ import {icons} from "../utils";
     src: string
  */
 
-export default class Ship extends React.Component{
+class Ship extends React.Component{
     render(){
         const img = <div className="ship-icon" key="icon">
                     <img src={this.props.src} alt=""/>
@@ -30,3 +31,27 @@ export default class Ship extends React.Component{
             </div>
     }
 }
+
+const getShipHealth = (shipName, state) =>{
+    const clickedCells = state.clickedCells;
+    let shipPositions = [];
+    state.ships.map((ship)=>{
+            if(ship.name === shipName){
+                shipPositions = ship.positions;
+            }
+        })
+    return Array.apply(null, {length: shipPositions.length}).map((value, index) => {return clickedCells.includes(shipPositions[index])? 0 : -1});
+}
+
+const mapStateToProps = (state, ownProps) =>{
+    console.log(ownProps);
+    console.log(state);
+    return {
+        health: getShipHealth(ownProps.name, state),
+        src: ownProps.src
+    }
+}
+
+export default connect(mapStateToProps)(Ship);
+
+//health: Array.apply(null, {length: shipType.size}).map(() => {return -1;}),
