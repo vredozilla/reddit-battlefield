@@ -1,10 +1,7 @@
 import * as React from "react";
+import { connect } from 'react-redux';
+import clickCell from "../actions/actions";
 import {icons} from "../utils";
-
-/*props
-    cells: int [] //where 0 - closed, 1 - missed, 2 - hit
-    onCellClick: ()=>{}
-*/
 
 const getImgSrc = (value) =>{
         switch(value){
@@ -12,10 +9,8 @@ const getImgSrc = (value) =>{
                 return icons.empty;
             case 1:
                 return icons.miss;
-                break;
             case 2:
                 return icons.hit;
-                break;
             default:
                 break;
         }
@@ -40,4 +35,28 @@ const Battlefield = ({cells, onCellClick}) =>{
         </div>
     }
 
-export default Battlefield;
+const getCells = (clickedCells, occupiedCells) => {
+        return Array.apply(null, {length: 100}).map((value, index) => {
+                let cellValue = 0;
+                if (clickedCells.includes(index)){
+                    cellValue = occupiedCells.includes(index) ? 2 : 1;
+                }
+                return cellValue;
+            });
+    }
+
+const mapStateToProps = state =>{
+    return {
+        cells: getCells(state.clickedCells, state.occupiedCells),
+    }
+}
+
+const mapDispatchToProps = dispatch => {
+    return {
+      onCellClick: id => {
+        dispatch(clickCell(id))
+      }
+    }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Battlefield);

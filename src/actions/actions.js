@@ -6,10 +6,4 @@ const clickCell = cellId => {
     }
   }
 
-
-
 export default clickCell;
-
-export{
-    
-}

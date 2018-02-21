@@ -1,12 +1,12 @@
 import * as React from "react";
 import ScoreContainer from "./ScoreContainer";
-import ShipsWrapper from "./ShipsContainerWrapper";
+import ShipsContainer from "./ShipsContainer";
 
 export default class GameInfo extends React.Component {
     render(){
-        return <div class="gameInfo">
+        return <div className="gameInfo">
             <ScoreContainer/>
-            <ShipsWrapper/>
+            <ShipsContainer/>
         </div>
     }
 }

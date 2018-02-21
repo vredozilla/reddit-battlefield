@@ -14,7 +14,7 @@ const icons ={
     empty: require("./images/Empty.png"),
 }
 
-const getPositions = (shipType) => {
+const getShipPositions = (shipType) => {
         const layout = layoutJson.layout;
         let positions;
         for(let i = 0; i<layout.length; i++){
@@ -34,11 +34,10 @@ const getShipData = ()=>{
         let shipData = [];
         for (let key in shipTypes) {
             if (shipTypes.hasOwnProperty(key)) {
-                const shipType = shipTypes[key];
                 const ship = {
                         name: key,
                         src: icons[key],
-                        positions: getPositions(key),
+                        positions: getShipPositions(key),
                     }
                 shipData.push(ship);
             }

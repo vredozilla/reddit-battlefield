@@ -1,11 +1,8 @@
 import * as React from "react";
+import { connect } from 'react-redux';
 import Ship from './Ship';
 
-/* props
-    ships: []
- */
-
-export default class ShipsContainer extends React.Component{
+class ShipsContainer extends React.Component{
     render(){
 
         const children = this.props.ships.map((item)=>{
@@ -21,3 +18,11 @@ export default class ShipsContainer extends React.Component{
             </div>
     }
 }
+
+const mapStateToProps = state =>{
+    return {
+        ships: state.ships
+    }
+}
+
+export default connect(mapStateToProps)(ShipsContainer);

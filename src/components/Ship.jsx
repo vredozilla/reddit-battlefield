@@ -2,11 +2,6 @@ import * as React from "react";
 import { connect } from 'react-redux';
 import {icons} from "../utils";
 
-/* props
-    health: []
-    src: string
- */
-
 class Ship extends React.Component{
     render(){
         const img = <div className="ship-icon" key="icon">
@@ -44,8 +39,6 @@ const getShipHealth = (shipName, state) =>{
 }
 
 const mapStateToProps = (state, ownProps) =>{
-    console.log(ownProps);
-    console.log(state);
     return {
         health: getShipHealth(ownProps.name, state),
         src: ownProps.src
@@ -53,5 +46,3 @@ const mapStateToProps = (state, ownProps) =>{
 }
 
 export default connect(mapStateToProps)(Ship);
-
-//health: Array.apply(null, {length: shipType.size}).map(() => {return -1;}),

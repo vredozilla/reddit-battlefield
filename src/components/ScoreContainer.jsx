@@ -3,32 +3,37 @@ import { connect } from 'react-redux';
 
 class ScoreContainer extends React.Component{
     render(){
-        return <div class="score-container">
+        return <div className="score-container">
           {
-            this.props.playerData.map((player)=>{
-              return <div class={"player"}>
-                        <div class="score">
-                          {player.score}
-                        </div>
-                        <div class="name">
-                          {player.name}
-                        </div>
-                    </div>
-            })
+            this.props.playerData.map((player, index)=>
+              {
+                return <div className={"player"} key={index}>
+                          <div className="score">
+                            {player.score}
+                          </div>
+                          <div className="name">
+                            {player.name}
+                          </div>
+                      </div>
+              })
           }
         </div>
     }
 }
 
+const formatScore = (score)=>{
+    return score > 9 ? score : "0"+score;
+  }
+
 const mapStateToProps = (state) =>{
   return {
      playerData: [{
           name: state.players[0].name,
-          score: state.players[0].score > 9 ?  state.players[0].score : "0"+ state.players[0].score
+          score: formatScore(state.players[0].score)
         },
         {
           name: state.players[1].name,
-          score: state.players[1].score > 9 ?  state.players[1].score : "0"+ state.players[1].score
+          score: formatScore(state.players[1].score)
         }] 
   }
 }
