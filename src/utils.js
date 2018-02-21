@@ -64,11 +64,11 @@ const getInitialData = ()=>{
             occupiedCells: getOccupiedPositions(shipsData),
             players: [
                 {
-                    name: "player1",
+                    name: "player 1",
                     score: 0
                 },
                 {
-                    name:"player2",
+                    name:"player 2",
                     score: 0
                 }
             ]

@@ -6,6 +6,10 @@ export default function appReducers(state = [], action) {
             if(!newState.clickedCells.includes(id))
             {
                 newState.clickedCells.push(id);
+                if(newState.occupiedCells.includes(id))
+                {
+                    newState.players[0].score++;
+                }
             }
             return newState;
         }
