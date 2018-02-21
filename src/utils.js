@@ -11,6 +11,7 @@ const icons ={
     hit: require("./images/Hit.png"),
     missSmall: require("./images/Miss small.png"),
     miss: require("./images/Miss.png"),
+    empty: require("./images/Empty.png"),
 }
 
 const getPositions = (shipType) => {
@@ -46,10 +47,22 @@ const getInitialData = ()=>{
         return shipData;
     }
 
+const getAllPositions = ()=>{
+        const data = getInitialData();
+        let allPositions = [];
+        data.map((item)=>{
+                item.positions.map((value)=>{
+                    allPositions.push(value);
+                })
+            });
+        return allPositions;
+    }
+
 
 
 
 export default getInitialData;
 export {
-    icons
+    icons,
+    getAllPositions
 }

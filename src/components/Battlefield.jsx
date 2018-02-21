@@ -10,7 +10,7 @@ export default class Battlefield extends React.Component{
     getImgSrc = (value) =>{
             switch(value){
                 case 0:
-                    return icons.miss; //// need empty icon?
+                    return icons.empty; //// need empty icon?
                 case 1:
                     return icons.miss;
                     break;
