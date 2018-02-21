@@ -35,7 +35,15 @@ const getShipHealth = (shipName, state) =>{
                 shipPositions = ship.positions;
             }
         })
-    return Array.apply(null, {length: shipPositions.length}).map((value, index) => {return clickedCells.includes(shipPositions[index])? 0 : -1});
+    let hitCount = 0;
+    shipPositions.map((value) => {
+            if (clickedCells.includes(value)){
+                hitCount++;
+            }
+        });
+
+    return Array.apply(null, {length: shipPositions.length})
+            .map((value, index) => {return index < hitCount ? 0 : -1});
 }
 
 const mapStateToProps = (state, ownProps) =>{
