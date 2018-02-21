@@ -29,7 +29,7 @@ const getPositions = (shipType) => {
         return positions;
     }
 
-const getInitialData = ()=>{
+const getShipData = ()=>{
         const shipTypes =  layoutJson.shipTypes;
         let shipData = [];
         for (let key in shipTypes) {
@@ -47,10 +47,9 @@ const getInitialData = ()=>{
         return shipData;
     }
 
-const getAllPositions = ()=>{
-        const data = getInitialData();
+const getOccupiedPositions = (shipsData)=>{
         let allPositions = [];
-        data.map((item)=>{
+        shipsData.map((item)=>{
                 item.positions.map((value)=>{
                     allPositions.push(value);
                 })
@@ -58,11 +57,26 @@ const getAllPositions = ()=>{
         return allPositions;
     }
 
-
-
+const getInitialData = ()=>{
+        const shipsData = getShipData();
+        return {
+            ships: shipsData,
+            clickedCells: [],
+            occupiedCells: getOccupiedPositions(shipsData),
+            players: [
+                {
+                    name: "player1",
+                    score: 0
+                },
+                {
+                    name:"player2",
+                    score: 0
+                }
+            ]
+         }   
+    }
 
 export default getInitialData;
 export {
-    icons,
-    getAllPositions
+    icons
 }
