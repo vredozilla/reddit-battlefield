@@ -47,13 +47,23 @@ body {
   display: flex;
   flex-direction: column;
   padding: 10px;
+  font-weight: bold;
+}
+.player > div {
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 .score{
   flex-grow: 1;
   border-bottom: 1px solid black;
+  height: 50%;
+  font-size: 60px;
 }
 .name{
   flex-grow: 1;
+  height: 50%;
+  font-size: 30px;
 }
 .ship-container{
   padding: 10px;
@@ -96,6 +106,15 @@ and (orientation : portrait){
     flex-grow: 1;
     flex-direction: row;
   }
+  .score-container{
+    width: 30%;
+  }
+  .score{
+    font-size: 40px;
+  }
+  .name{
+    font-size: 20px;
+  }
   .battlefield-container{
     flex-grow: 5;
   }
@@ -106,7 +125,7 @@ and (orientation : portrait){
     max-width: 130px;
   }
   .health img{
-    max-width: 20px;
+    max-width: 18px;
   }
 }
 
@@ -145,5 +164,11 @@ and (orientation : portrait){
   }
   .health img{
     max-width: 14px;
+  }
+  .score{
+    font-size: 40px;
+  }
+  .name{
+    font-size: 20px;
   }
 }
