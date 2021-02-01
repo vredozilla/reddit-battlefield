@@ -1,6 +1,6 @@
 const fieldSize = 10;
 const layoutJson = require('./ShipLayoutData.json');
-
+// comment from github
 const icons ={
     carrier: require("./images/Aircraft Shape.png"),
     battleship: require("./images/Battleship Shape.png"),
